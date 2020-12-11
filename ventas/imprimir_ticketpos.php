@@ -4,6 +4,19 @@
 	include('../funciones/numero_a_letras.php');
 	
 	$link = Conectarse();
+	
+	
+	
+	$consulta_empresa = "SELECT * FROM empresas";
+	
+	$result_empresa = mysqli_query($link, $consulta_empresa);
+	
+	while ($fila = mysqli_fetch_assoc($result_empresa)) {
+		$empresa = $fila;
+	}
+	
+	
+	
 	$consulta = "SELECT * FROM ventas
 	LEFT JOIN ventas_detalle USING (id_ventas)
 	LEFT JOIN usuarios USING (id_usuarios)
@@ -19,7 +32,7 @@
 	$respuesta.=   "\x1b"."@";
 	$respuesta.= "\x1b"."E".chr(1); // Bold
 	$respuesta.= "!";
-	$respuesta.=  "EL ARK@ CIBER \n";
+	$respuesta.=  $empresa["nombre_empresas"]." \n";
 	$respuesta.=  "\x1b"."E".chr(0); // Not Bold
 	$respuesta.=  "\x1b"."@" .chr(10).chr(13);
 	$respuesta.= "Folio:   ". $fila_venta[0]["id_ventas"]. "\n";
