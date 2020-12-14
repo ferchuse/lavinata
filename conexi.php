@@ -11,8 +11,8 @@ function Conectarse()
 		$pass="Glifom3dia";
 	}
 	else{
-		$db="cyber";
-		$usuario="sistemas";
+		$db="microsit_lavinata";
+		$usuario="microsit_practic";
 		$pass="Glifom3dia";
 		
 	}
@@ -35,7 +35,7 @@ function Conectarse()
    
   /*  if (!mysqli_query( $link, $set_local))	
    {
-		die( "Error cambiando TimeZone.". mysqli_error());
+   die( "Error cambiando TimeZone.". mysqli_error());
    } */
    
 	// mysqli_query($link, "SET NAMES 'utf8'") or die("Error Cambiando charset").mysqli_error($link);

@@ -37,8 +37,7 @@
 	);
 	$sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
 	$sendSmtpEmail['to'] = array(
-	array('email'=>'ferchuse@hotmail.com', 'name'=>'Fernando Guzman'),
-	array('email'=>'dosarka7@gmail.com', 'name'=>'Cyber El Ark@')
+	array('email'=>'ferchuse@hotmail.com', 'name'=>'Fernando Guzman')
 	
 	);
 	
