@@ -13,7 +13,7 @@ function Conectarse()
 	else{
 		$db="microsit_lavinata";
 		$usuario="microsit_practic";
-		$pass="Glifom3dia";
+		$pass="UAEH@2018";
 		
 	}
 	
