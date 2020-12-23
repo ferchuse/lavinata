@@ -56,10 +56,11 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="ordenar">Ordenar Por:</label>
+							<label for="ordenar">Ordenar Por: </label>
 							<select  class="form-control"  name="orden">
 								<option value="codigo_productos">Codigo</option>
 								<option value="existencia_productos">Existencia</option>
+								<option value="vendidos">Vendidos</option>
 								<option selected value="descripcion_productos">Descripción</option>
 							</select>
 						</div>
@@ -91,12 +92,12 @@
 						<thead class="bg-primary">
 							<tr>
 								<th class="text-center">Descripción</th>
-								<th class="text-center">Código</th>
 								<th class="text-center">Costo de Compra</th>
 								<th class="text-center">Precio Venta</th>
 								<th class="text-center">Precio Mayoreo</th>
 								<th class="text-center">Mínimo</th>
 								<th class="text-center">Existencia</th>
+								<th class="text-center">Vendidos</th>
 								<th class="text-center">Acciones</th>	
 							</tr>
 							<tr>
@@ -127,11 +128,11 @@
 		<form id="form_imprimir_codigos" target="_blank" action="../impresion/imprimir_codigos.php">
 		</form>
 		<?php include('form_productos.php'); ?>
-		<?php include('../forms/existencias.php'); ?>
+		<?php include('form_existencias.php'); ?>
 		
 		<?php  include('../scripts_carpetas.php'); ?>
 		<script src="catalogo.js?<?= date("d-m-Y-H-m-s")?>"></script>
 		<script src="carrito.js?<?= date("d-m-Y-H-m-s")?>"></script>
-		<script src="https://unpkg.com/sticky-table-headers"></script>
+		<script src="../lib/jquery.stickytableheaders.min.js"></script>
 	</body>
 </html>

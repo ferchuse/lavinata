@@ -468,7 +468,9 @@ function agregarProducto(producto){
 		$fila_producto = `<tr class="bg-info">
 		<td class="col-sm-1">
 		<input hidden class="id_productos"  value="${producto['id_productos']}">
-		<input hidden class="unidad" value='${producto['unidad_productos']}'>
+		<input hidden class="piezas" value='${producto['piezas']}'>
+		<input hidden class="unidad_venta" value='${producto['unidad_productos']}'>
+		<input hidden class="unidad_compra" value='${producto['unidad_compra']}'>
 		<input hidden class="descripcion" value='${producto['descripcion_productos']}'>
 		<input hidden class="precio_mayoreo" value='${producto['precio_mayoreo']}'>
 		<input hidden class="precio_menudeo" value='${producto['precio_menudeo']}'>
@@ -476,7 +478,7 @@ function agregarProducto(producto){
 		<input hidden class="costo_proveedor" value='${producto['costo_proveedor']}'>
 		<input type="number"  step="any" class="cantidad form-control text-right"  value='${producto['cantidad']}'>
 		</td>
-		<td class="text-center">${producto['unidad_productos']}</td>
+		<td class="text-center unidad">${producto['unidad_productos']}</td>
 		<td class="text-center">${producto['descripcion_productos']}</td>
 		<td class="col-sm-1"><input readonly type="number" class='precio form-control' value='${precio}'> </td>
 		<td class="col-sm-1"><input readonly type="number" class='importe form-control text-right' > </td>
@@ -594,6 +596,8 @@ function guardarVenta(event){
 		productos.push({
 			"id_productos": $(item).find(".id_productos").val(),
 			"cantidad": $(item).find(".cantidad").val(),
+			"piezas": $(item).find(".piezas").val(),
+			"unidad": $(item).find(".unidad").text(),
 			"precio": $(item).find(".precio").val(),
 			"descripcion": $(item).find(".descripcion").val(),
 			"importe": $(item).find(".importe").val(),
@@ -772,18 +776,24 @@ function aplicarMayoreoGeneral(){
 	sumarImportes();
 }
 function aplicarMayoreoProducto(){
-	var $precio;
+	var precio;
 	var fila =  $(this).closest("tr");
 	console.log("aplicarMayoreoProducto");
 	
 	
 	if($(this).prop("checked")){
-		$precio = fila.find(".precio_mayoreo").val();
+		precio = fila.find(".precio_mayoreo").val();
+		unidad = fila.find(".unidad_compra").val();
 	}
 	else{
-		$precio =  fila.find(".precio_menudeo").val();
+		precio =  fila.find(".precio_menudeo").val();
+		unidad = fila.find(".unidad_venta").val();
+		
 	}
-	fila.find(".precio").val($precio);
+	
+	
+	fila.find(".precio").val(precio);
+	fila.find(".unidad").text(unidad);
 	
 	
 	sumarImportes();

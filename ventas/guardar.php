@@ -80,8 +80,8 @@
 		$insertarVentasDetalle = "INSERT INTO ventas_detalle SET
 		id_ventas = '$id_ventas',
 		id_productos = '$producto[id_productos]',
-		unidad_productos = '$producto[unidad_productos]',
-		cantidad = '$producto[cantidad]',
+	cantidad = '$producto[cantidad]',
+		unidad = '$producto[unidad]',
 		precio = '$producto[precio]',
 		importe = '$producto[importe]',
 		descripcion = '$producto[descripcion]',
@@ -100,32 +100,32 @@
 			$respuesta['mensaje_detalle'] = "Error al guardar Ventas Detalle $insertarVentasDetalle ".mysqli_error($link);
 		}
 		
-		//INSERTA movimientos
-		$exist_nueva = $producto["existencia_anterior"] - $producto["cantidad"];
+		$unidades_mayoreo = ["CAJA", "CHAROLA", "CARTON", "BOLSA"];
 		
-		$inserta_movimientos = "INSERT INTO `almacen_movimientos` 
-		(`fecha_movimiento`, `tipo_movimiento`, `id_productos`, `cantidad`, `exist_anterior`, `exist_nueva`, `id_usuarios`, `costo`, `id_almacen`, `turno`, `referencia`, `folio`) VALUES (NOW(), 'SALIDA', 
-		'{$producto["id_productos"]}', '{$producto["cantidad"]}', '{$producto["existencia_anterior"]}', 
-		'$exist_nueva', 
-		'$id_usuarios',
-		'{$producto["precio"]}', 
-		'1', 
-		'$turno',   
-		'VENTA #$id_ventas', 
-		'$id_ventas')";
-		
-		$result_movimientos = mysqli_query( $link, $inserta_movimientos );
-		
-		$respuesta["result_movimientos"] = $result_movimientos."-".mysqli_error($link) ;
+		if( in_array($producto["unidad"], $unidades_mayoreo)){
+			$cantidad_piezas = $producto["cantidad"] * $producto["piezas"];
+			$cantidad_cajas =  $producto["cantidad"] ;
+			
+			
+		}
+		else{
+			$cantidad_piezas = $producto["cantidad"] ;
+			$cantidad_cajas =  round($producto["cantidad"] / $producto["piezas"]) ;
+		}
 		
 		//Actualiza existencias
 		
-		$update_existencia = "UPDATE productos SET existencia_productos = existencia_productos - '{$producto["cantidad"]}'
+		$update_existencia = "UPDATE productos 
+		SET 
+		existencia_productos = existencia_productos - '$cantidad_piezas'
 		WHERE id_productos = '{$producto["id_productos"]}'	"; 
+		
 		
 		$result_existencia = mysqli_query( $link, $update_existencia );
 		
-		$respuesta["result_existencia"] = $result_existencia;
+		$respuesta["update_existencia"] = $update_existencia;
+		$respuesta["estatus_existencia"] = $result_existencia;
+		$respuesta["result_existencia"] = mysqli_error($link);
 	}
 	
 	echo json_encode($respuesta);

@@ -5,7 +5,7 @@
 	$respuesta = [];
 	
 	//Busca una compra pendiente Si existe obtiene el id, sino la crea y obtiene el id
-	$query = "SELECT * FROM compras WHERE estatus_compras='PENDIENTE' ";
+	$query = "SELECT * FROM compras WHERE id_compras = '{$_GET["id_compras"]}' ";
 	$result = mysqli_query($link, $query);
 	if ($result) {
 		if (mysqli_num_rows($result) > 0) {

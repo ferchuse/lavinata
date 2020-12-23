@@ -232,7 +232,7 @@ function agregarProducto(producto){
 		<input hidden class="precio_mayoreo" value='${producto['precio_mayoreo']}'>
 		<input type="number"  step="any" class="cantidad form-control text-right"  value='${producto['cantidad']}'>
 		</td>
-		<td class="text-center">${producto['piezas']}</td> 
+		<td class="text-center piezas">${producto['piezas']}</td> 
 		<td class="text-center">${producto['descripcion_productos']}</td>
 		<td class="col-sm-1">
 		<input  type="number" readonly class='precio form-control' value='${producto['costo_proveedor']}'> 
@@ -270,7 +270,7 @@ function agregarProducto(producto){
 	}
 	$("#buscar_producto").val("");
 	
-	alertify.success("Producto Agregado")
+	// alertify.success("Producto Agregado")
 	
 	sumarImportes();
 	
@@ -327,7 +327,7 @@ function guardarVenta(event){
 			}).done(function(respuesta){
 			if(respuesta.estatus_venta == "success"){
 				alertify.success('Compra Guardada');
-				window.location.href="compras_lista.php";
+				// window.location.href="compras_lista.php";
 				
 				// imprimirTicket( respuesta.id_ventas)
 				
@@ -547,6 +547,10 @@ function guardarProducto(event) {
 					
 					case "costo_mayoreo":
 					$("#tabla_venta tbody tr").eq($("#partida").val()).find(".precio").val(campo.value);
+					break;
+					
+					case "piezas":
+					$("#tabla_venta tbody tr").eq($("#partida").val()).find(".piezas").text(campo.value);
 					break;
 					
 					

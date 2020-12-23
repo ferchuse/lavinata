@@ -101,12 +101,19 @@
 		
 		
 		if($_POST["entrada_inventario"] == "true"){
-			$update_existencia = "UPDATE productos SET existencia_productos = existencia_productos + '{$producto["cantidad"]}'
+		
+			
+		
+			$update_existencia = "UPDATE productos 
+			SET 
+			existencia_productos = existencia_productos + ({$producto["cantidad"]} * piezas)
 			WHERE id_productos = '{$producto["id_productos"]}'	"; 
 			
 			$result_existencia = mysqli_query( $link, $update_existencia );
 			
+			$respuesta["update_existencia"] = $update_existencia ;
 			$respuesta["result_existencia"] = $result_existencia ;
+			$respuesta["mensaje_existencia"] = mysqli_error($link) ;
 		}
 		
 		

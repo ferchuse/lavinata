@@ -27,7 +27,7 @@
 	id_productos,
 	codigo_productos,
 	descripcion_productos,
-	nombre_departamentos,
+	departamentos.nombre_departamentos,
 	COALESCE (entradas, 0) AS entradas,
 	COALESCE (salidas, 0) AS salidas
 	FROM

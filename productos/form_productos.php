@@ -78,8 +78,12 @@
 									<div class="form-group ">
 										<label for="precio_mayoreo">Ultimo Precio Mayoreo:</label>
 										
-										<input readonly placeholder="" type="number"  step=".01" class="form-control" id="precio_mayoreo" name="precio_mayoreo">
+										<input readonly placeholder="" type="number"  step=".01" class="form-control" id="ultimo_precio_mayoreo" name="ultimo_precio_mayoreo">
 									</div> 
+									<div class="form-group ">
+										<label for="existencia_cajas">Existencia en <span id="span_unidad_compra">Cajas</span>:</label>
+										<input  type="number" min="0" step="any" class="form-control" id="existencia_cajas" name="existencia_cajas">
+									</div>
 								</div> 
 								<div class="col-md-6">
 									<div class="form-group">
@@ -115,12 +119,14 @@
 										
 										<input placeholder="" type="number"  step=".01" class="form-control" id="precio_mayoreo" name="precio_mayoreo">
 									</div> 
+									
+									<div class="form-group ">
+										<label for="existencia_productos">Existencia en Piezas:</label>
+										<input placeholder="Cantidad de productos en existencia" type="number" min="0" step="any" class="form-control" id="existencia_productos" name="existencia_productos">
+									</div>
 								</div> 
 							</div>
-							<div class="form-group ">
-								<label for="existencia_productos">Existencia en Piezas:</label>
-								<input placeholder="Cantidad de productos en existencia" type="number" min="0" step="any" class="form-control" id="existencia_productos" name="existencia_productos">
-							</div>
+							
 							<div class="form-group ">
 								<label for="min_productos">Minimo:</label>
 								<input placeholder="" type="number" min="0" class="form-control" id="min_productos" name="min_productos">
