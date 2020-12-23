@@ -103,7 +103,7 @@
 	
 	
 	$consulta_productos = "SELECT
-	 cantidad,
+	cantidad,
 	descripcion,
 	importe
 	FROM
@@ -134,13 +134,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Corte de Caja</title>
 		
-		<link href="../css/bootstrap_3.4.1.css" rel="stylesheet" media="all" />
-		<link href="../css/alertify.min.css" rel="stylesheet" media="all" />
-		<link href="../css/all.min.css" rel="stylesheet">
-		<link href="../css/imprimir_pago.css" rel="stylesheet" media="all">
-		<link href="../css/imprimir_venta.css" rel="stylesheet" >
+		
+		
+		<link href="../css/bootstrap.min.css" rel="stylesheet" media="all">
+		<link href="../css/alertify.min.css" rel="stylesheet" media="all"/>
+		<link href="../css/common.css" rel="stylesheet" media="all"  >
+		<link href="../css/imprimir_venta.css" rel="stylesheet" media="all">
+		<link href="../css/all.min.css" rel="stylesheet" >
+		<link href="../lib/autocomplete.css" rel="stylesheet" >
 		<link href="../css/menu.css" rel="stylesheet" >
 		<link href="../css/b4-margin-padding.css" rel="stylesheet" >
+		<link rel="manifest" href="../manifest.json?v=<?= date ("d-m")?>">
 		
 	</head>
 	
@@ -336,23 +340,23 @@
 											</div>
 											
 											<?php 
-											// echo $consulta_productos;
-											foreach ($productos_vendidos as $producto) {
-												$cantidad_productos+= $producto["cantidad"];
-												$importe_productos+= $producto["importe"];
+												// echo $consulta_productos;
+												foreach ($productos_vendidos as $producto) {
+													$cantidad_productos+= $producto["cantidad"];
+													$importe_productos+= $producto["importe"];
 												?>
-											
-											<div class="row 
-											text-center " style="line-height:35px; margin-bottom: 5px;">
-												<div class="col-sm-1"><?php echo number_format($producto["cantidad"]); ?></div>
-												<div class="col-sm-3"><?php echo $producto["descripcion"]; ?></div>
-												<div class="col-sm-2"><?php echo number_format($producto["importe"],2); ?></div>
 												
-												<?php  ?>
-												
-											</div>
-											<?php
-											}
+												<div class="row 
+												text-center " style="line-height:35px; margin-bottom: 5px;">
+													<div class="col-sm-1"><?php echo number_format($producto["cantidad"]); ?></div>
+													<div class="col-sm-3"><?php echo $producto["descripcion"]; ?></div>
+													<div class="col-sm-2"><?php echo number_format($producto["importe"],2); ?></div>
+													
+													<?php  ?>
+													
+												</div>
+												<?php
+												}
 											?>
 											
 										</div>
@@ -363,7 +367,7 @@
 													echo "<strong>" . "$" . number_format($importe_productos, 2) . "</strong>";
 												?>
 											</h3>
-											</div>
+										</div>
 									</div>
 								</div>
 								<div id="menu1" class="tab-pane fade">
