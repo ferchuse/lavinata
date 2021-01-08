@@ -93,7 +93,7 @@
 							<tr>
 								<th class="text-center">Descripción</th>
 								<th class="text-center">Costo de Compra</th>
-								<th class="text-center">Precio Venta</th>
+								<th class="text-center">Precio Unitario</th>
 								<th class="text-center">Precio Mayoreo</th>
 								<th class="text-center">Mínimo</th>
 								<th class="text-center">Existencia</th>

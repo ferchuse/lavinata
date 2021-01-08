@@ -74,7 +74,10 @@ function listaProductos() {
 			bgClass = Number(value.existencia_productos) < Number(value.min_productos) ? "bg-danger" : " ";
 			
 			if(value.usa_inventario == "SI" ){
-				existencia = value.existencia_productos;
+				existencia = 
+				Math.round(value.existencia_productos / value.piezas) 
+				+ " "+value.unidad_compra + " / "+
+				value.existencia_productos + " " + value.unidad_productos ;
 				
 				if(existencia < 0 ){
 					existencia = 0;

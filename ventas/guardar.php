@@ -102,15 +102,14 @@
 		
 		$unidades_mayoreo = ["CAJA", "CHAROLA", "CARTON", "BOLSA"];
 		
-		if( in_array($producto["unidad"], $unidades_mayoreo)){
+		if( $producto["unidad"] != "PZA"){
 			$cantidad_piezas = $producto["cantidad"] * $producto["piezas"];
-			$cantidad_cajas =  $producto["cantidad"] ;
-			
+			// $cantidad_cajas =  $producto["cantidad"] ;
 			
 		}
 		else{
 			$cantidad_piezas = $producto["cantidad"] ;
-			$cantidad_cajas =  round($producto["cantidad"] / $producto["piezas"]) ;
+			// $cantidad_cajas =  round($producto["cantidad"] / $producto["piezas"]) ;
 		}
 		
 		//Actualiza existencias

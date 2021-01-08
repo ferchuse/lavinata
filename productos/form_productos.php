@@ -22,11 +22,22 @@
 								<label for="">Descripción: *</label>
 								<input placeholder="Nombre del producto" required class="form-control" type="text" name="descripcion_productos" id="descripcion_productos">
 							</div>
-							<div class="form-group">
-								<label required for="unidad_productos">Unidad de Medida:</label>
+							<div class="form-group col-sm-6">
+								<label required for="unidad_productos">Unidad de Compra:</label>
+								<select  class="form-control" id="unidad_compra" name="unidad_compra">
+									<option value="">Elije...</option>
+									<option value="PZA">Pieza</option>
+									<option selected value="CHAROLAS">CHAROLAS</option>
+									<option selected value="CAJAS">CAJAS</option>
+									<option value="KG">A Granel</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<label required for="unidad_productos">Unidad de Venta:</label>
 								<select  class="form-control" id="unidad_productos" name="unidad_productos">
 									<option value="">Elije...</option>
 									<option selected value="PZA">Pieza</option>
+									<option selected value="CAJA">CAJA</option>
 									<option value="KG">A Granel</option>
 								</select>
 							</div>

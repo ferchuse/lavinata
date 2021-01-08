@@ -41,27 +41,11 @@
 	foreach($listaProductos as $indice => $producto){
 		
 		//INSERTA movimientos
-		$exist_nueva = $producto["existencia_anterior"] + $producto["cantidad"];
-		
-		$inserta_movimientos = "INSERT INTO `almacen_movimientos` 
-		(`fecha_movimiento`, `tipo_movimiento`, `id_productos`, `cantidad`, `exist_anterior`, `exist_nueva`, `id_usuarios`, `costo`, `id_almacen`, `turno`, `referencia`, `folio`) VALUES (NOW(), 'ENTRADA', 
-		'{$producto["id_productos"]}', '{$producto["cantidad"]}', '{$producto["existencia_anterior"]}', 
-		'$exist_nueva', 
-		'{$_COOKIE["id_usuarios"]}',
-		'{$producto["precio"]}', 
-		'1', 
-		'$turno',   
-		'DEVOLUCIÓN #$id_ventas', 
-		'$id_ventas')";
-		
-		$result_movimientos = mysqli_query( $link, $inserta_movimientos );
-		
-		$respuesta["result_movimientos"] = $result_movimientos."-".mysqli_error($link) ;
-		
 		
 		//actualiza existencias
 		
-		$update_existencia = "UPDATE productos SET existencia_productos = existencia_productos + '{$producto["cantidad"]}'
+		$update_existencia = "UPDATE productos 
+		SET existencia_productos = existencia_productos + '{$producto["cantidad"]}'
 		WHERE id_productos = '{$producto["id_productos"]}'	"; 
 		
 		$result_existencia = mysqli_query( $link, $update_existencia );

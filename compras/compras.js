@@ -102,6 +102,8 @@ $(document).ready(function(){
 	$('#costo_mayoreo').keyup(modificarPrecio );
 	$('#ganancia_menudeo_porc').keyup(calculaPrecioVenta );
 	$('#precio_menudeo').keyup(calculaGanancia );
+	$('#existencia_cajas').keyup(calculaExistencia );
+	$('#existencia_productos').keyup(calculaExistencia );
 	
 	//Autocomplete Productos https://github.com/devbridge/jQuery-Autocomplete
 	$("#buscar_producto").autocomplete({
@@ -235,7 +237,7 @@ function agregarProducto(producto){
 		<td class="text-center piezas">${producto['piezas']}</td> 
 		<td class="text-center">${producto['descripcion_productos']}</td>
 		<td class="col-sm-1">
-		<input  type="number" readonly class='precio form-control' value='${producto['costo_proveedor']}'> 
+		<input  type="number" readonly class='precio form-control' value='${producto['costo_mayoreo']}'> 
 		</td>
 		
 		<td class="col-sm-1"><input readonly type="number" class='importe form-control text-right' > </td>
@@ -274,6 +276,33 @@ function agregarProducto(producto){
 	
 	sumarImportes();
 	
+	
+	
+}
+
+
+function calculaExistencia(event) {
+	console.log("calculaExistencia()")
+	console.log(event.target.id)
+	
+	
+	var existencia_cajas = Number($("#existencia_cajas").val());
+	var existencia_piezas = Number($("#existencia_productos").val());
+	var piezas = Number($('#piezas').val());
+	
+	console.log(existencia_cajas)
+	console.log(existencia_piezas)
+	console.log(piezas)
+	
+	if(event.target.id == "existencia_cajas"){
+		existencia_piezas = existencia_cajas * piezas;
+		$("#existencia_productos").val(existencia_piezas)
+	}
+	else{
+		 existencia_cajas = existencia_piezas / piezas
+		 $("#existencia_cajas").val(existencia_cajas.toFixed(1))
+		 
+	}
 	
 	
 }

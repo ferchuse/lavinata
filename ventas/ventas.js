@@ -94,7 +94,7 @@ function renderProductos(tab_index, venta){
 		</td>
 		<td class="text-center">${producto['unidad_productos']}</td>
 		<td class="text-center">${producto['descripcion_productos']}</td>
-		<td class="col-sm-1"><input readonly type="number" class='precio form-control' value='${producto.precio}'> </td>
+		<td class="col-sm-1"><input  type="number" class='precio form-control' value='${producto.precio}'> </td>
 		<td class="col-sm-1">
 		<input readonly type="number" class='importe form-control text-right' value=${producto.importe}>
 		</td>
@@ -480,7 +480,7 @@ function agregarProducto(producto){
 		</td>
 		<td class="text-center unidad">${producto['unidad_productos']}</td>
 		<td class="text-center">${producto['descripcion_productos']}</td>
-		<td class="col-sm-1"><input readonly type="number" class='precio form-control' value='${precio}'> </td>
+		<td class="col-sm-1"><input  type="number" class='precio form-control' value='${precio}'> </td>
 		<td class="col-sm-1"><input readonly type="number" class='importe form-control text-right' > </td>
 		<td class="col-sm-1">	
 		<input class="existencia_anterior form-control" readonly  value='${producto['existencia_productos']}'> 
@@ -503,6 +503,7 @@ function agregarProducto(producto){
 		
 		//Asigna Callbacks de eventos
 		$(".mayoreo").change(aplicarMayoreoProducto);
+		$(".precio").keyup(sumarImportes);
 		$(".cantidad").keyup(sumarImportes);
 		$(".cantidad").change(sumarImportes);
 		$("input").focus(function(){
