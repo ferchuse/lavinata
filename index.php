@@ -61,13 +61,13 @@
 					<div class="col-md-4">
 						<label for="">Código:</label>
 						
-						<input tabindex="-1" id="codigo_producto" autofocus type="text" class="form-control" placeholder="ESC" size="50">
+						<input tabindex="-1" id="codigo_producto"  type="text" class="form-control" placeholder="ESC" size="50">
 						
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="">Descripción:</label>
-							<input tabindex="-1" id="buscar_producto" type="text" class="form-control" size="50" placeholder="F10">
+							<input tabindex="-1" id="buscar_producto" autofocus type="text" class="form-control" size="50" placeholder="F10">
 						</div>
 					</div>
 					<div class="col-md-4 hidden">

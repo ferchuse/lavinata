@@ -318,7 +318,7 @@ $(document).ready( function onLoad(){
 						producto_elegido.importe= producto_elegido.precioventa_menudeo_productos;
 						producto_elegido.cantidad=1 ;
 						agregarProducto(producto_elegido);
-						$("#codigo_producto").focus();
+						$("#buscar_producto").focus();
 						
 					}
 					else if(producto_elegido.unidad_productos == 'KG'){ //Si el producto se vende a granel
@@ -362,7 +362,7 @@ $(document).ready( function onLoad(){
 	
 	$('#cerrar_venta').click( cobrar);
 	
-	$("#codigo_producto").focus();
+	$("#buscar_producto").focus();
 }); 
 
 function cobrar(){
