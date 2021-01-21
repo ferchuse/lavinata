@@ -1,6 +1,6 @@
 const cacheName = 'offline';
 const staticAssets = [
-  './'
+  './corte/resumen.php'
 ];
 
 self.addEventListener('install', async event => {
