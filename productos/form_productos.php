@@ -37,7 +37,7 @@
 								<select  class="form-control" id="unidad_productos" name="unidad_productos">
 									<option value="">Elije...</option>
 									<option selected value="PZA">Pieza</option>
-									<option selected value="CAJA">CAJA</option>
+									<option selected value="CAJAS">CAJAS</option>
 									<option value="KG">A Granel</option>
 								</select>
 							</div>
